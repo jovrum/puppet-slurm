@@ -228,8 +228,17 @@ Licenses=<%= scope['slurm::licenses'] %>
 
 
 
-#MaxJobCount=5000
 #MaxStepCount=40000
+<% if scope['slurm::maxarraysize'].empty? -%>
+# MaxArraySize=
+<% else -%>
+MaxArraySize=<%= scope['slurm::maxarraysize'] %>
+<% end -%>
+<% if scope['slurm::maxjobcount'].empty? -%>
+# MaxJobCount=
+<% else -%>
+MaxJobCount=<%= scope['slurm::maxjobcount'] %>
+<% end -%>
 MaxTasksPerNode=<%= scope['slurm::maxtaskspernode'] %>
 #PluginDir=
 #PlugStackConfig=
